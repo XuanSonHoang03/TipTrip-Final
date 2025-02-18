@@ -1,0 +1,169 @@
+.brg-img {
+    background-image: url('/ImmersiveScrolling/images/background/partners/sub-page/world-background.png');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.brg-img-gradient {
+    background-image: url('/ImmersiveScrolling/images/background/partners/sub-page/Gradient.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.8;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.quote-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    z-index: 2;
+    text-align: center;
+}
+
+.quote-content-video-container {
+    width: 40%;
+    margin-top: 100px;
+}
+
+.quote-content-video {
+    width: 100%;
+    height: 455px;
+    border-radius: 16px;
+    object-fit: fill;
+}
+
+.quote-content-text {
+    color: #44444E;
+    width: 50%;
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 32px;
+    text-align: left;
+    padding: 20px;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+}
+
+.number-quote {
+    font-family: BR Omega;
+    font-size: 64px;
+    font-weight: 400;
+    line-height: 92px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+}
+
+.quote-content-body {
+    top: 10px;
+}
+
+.number-quote-2 {
+    color: #F37021;
+}
+
+.number-quote-3 {
+    color: #33B2C1;
+}
+
+/* Tablet and Mobile styles */
+
+@media (max-width: 768px) {
+
+    .brg-img {
+        background-image: url('/ImmersiveScrolling/images/background/partners/sub-page/the-world.png');
+        background-size: cover;
+        background-position: center;
+    }
+
+    .brg-img-gradient {
+        background-image: url('/ImmersiveScrolling/images/background/partners/sub-page/Gradient-mobile.png');
+        background-size: cover;
+        background-position: center;
+    }
+
+    /* Additional style tweaks for mobile */
+    .quote-content {
+        flex-direction: column;
+        text-align: left;
+    }
+
+    .quote-content-text {
+        width: 80%;
+        font-size: 18px;
+        line-height: 28px;
+    }
+
+    .quote-content-video-container {
+        width: 80%;
+        margin-top: 20px;
+    }
+
+    .container-stats {
+        position: relative;
+        flex-direction: column;
+        width: 100%;
+        padding: 20px;
+    }
+
+    .container-fluid.position-absolute.bottom-0 {
+        position: relative;
+        z-index: 3;
+        padding: 20px;
+    }
+
+    .container-stats div {
+        width: 45%;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 575px) {
+
+    .brg-img {
+        background-image: url('/ImmersiveScrolling/images/background/partners/sub-page/the-world.png');
+        background-size: cover;
+        background-position: center;
+    }
+
+    .brg-img-gradient {
+        background-image: url('/ImmersiveScrolling/images/background/partners/sub-page/Gradient-mobile.png');
+        background-size: cover;
+        background-position: center;
+    }
+
+    .quote-content-text {
+        width: 100%;
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .quote-content-video-container {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .container-stats {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+    }
+
+    .container-stats div {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}

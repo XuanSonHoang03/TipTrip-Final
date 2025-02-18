@@ -27,7 +27,7 @@ namespace TipTrip.Pages.Auth
 			var result = await _meAuthenticationService.Login(loginData);
 			if ((bool)result.Success)
 			{
-				return RedirectToPage("/Index"); // Redirect to home or dashboard page after successful login
+				return RedirectToPage("/Page/Homepage"); 
 			}
 
 			message = result.Message;

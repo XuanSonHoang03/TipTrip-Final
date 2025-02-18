@@ -1,0 +1,60 @@
+﻿@page
+@model TipTrip.Pages.Test.TestPlanModel
+@{
+    ViewData["Title"] = "Trip Plan Test";
+}
+
+<h2>Your Personalized Trip Plan</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label for="messageResponse">Request Trip Plan</label>
+        <textarea class="form-control" id="messageRequest" name="messageRequest" rows="4">@Model.messageRequest</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Get Trip Plan</button>
+</form>
+
+@if (Model.messageResponse != null)
+{
+    <h3>Trip Plan Response:</h3>
+    <div class="alert alert-info">
+        <p><strong>ID:</strong> @Model.messageResponse.Id</p>
+        <p><strong>Created At:</strong> @Model.messageResponse.CreateAt</p>
+        <p><strong>Role:</strong> @Model.messageResponse.Role</p>
+        <p><strong>Model:</strong> @Model.messageResponse.Model</p>
+
+        <h4>Trip Details:</h4>
+        <p><strong>Destination:</strong> @Model.messageResponse.Content.Destination</p>
+        <p><strong>Start Date:</strong> @Model.messageResponse.Content.EndDate</p>
+        <p><strong>End Date:</strong> @Model.messageResponse.Content.EndDate</p>
+        <p><strong>Transportation:</strong> @Model.messageResponse.Content.Transportation</p>
+
+        <h4>Itinerary:</h4>
+        @foreach (var day in Model.messageResponse.Content.Itinerary)
+        {
+            <div class="card mb-3 p-3">
+                <h5>Day @day.Day</h5>
+                <p><strong>Budget:</strong> @day.Budget</p>
+                <p><strong>Notes:</strong> @day.Notes</p>
+                <p><strong>Weather:</strong> @day.Weather.Temperature - @day.Weather.Description</p>
+
+                <h6>Activities:</h6>
+                <ul>
+                    @foreach (var activity in day.Activities)
+                    {
+                        <li>
+                            <strong>@activity.Time</strong> - @activity.Location
+                            <br />
+                            <small>Food Recommendations: @string.Join(", ", activity.FoodRecommendations)</small>
+                        </li>
+                    }
+                </ul>
+            </div>
+        }
+
+        <h4>Token Usage:</h4>
+        <p><strong>Input Tokens:</strong> @Model.messageResponse.Usage.InputTokenCount</p>
+        <p><strong>Output Tokens:</strong> @Model.messageResponse.Usage.OutputTokenCount</p>
+        <p><strong>Total Tokens:</strong> @Model.messageResponse.Usage.TotalTokenCount</p>
+    </div>
+}
