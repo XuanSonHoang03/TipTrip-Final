@@ -1,0 +1,58 @@
+﻿@page
+@model TipTrip.Pages.Page.SuggestPlanModel
+@{
+    Layout = "_layout";
+}
+
+@if (Model.messageResponse != null)
+{
+    <div class="container mt-5">
+        <div class="card shadow-lg border-0 rounded-4 p-4 bg-white">
+            <h2 class="text-center text-primary fw-bold mb-4">🌍 Your Personalized Trip Plan</h2>
+
+            <div class="alert alert-light border-start border-4 border-primary p-4 rounded-3">
+                <h3 class="text-dark fw-semibold">🚀 Trip Details</h3>
+                <hr class="border-primary" />
+                <p><strong>📍 Destination:</strong> <span class="text-primary">@Model.messageResponse.Content.Destination</span></p>
+                <p><strong>📅 Start Date:</strong> <span class="text-primary">@Model.messageResponse.Content.StartDate</span></p>
+                <p><strong>🏁 End Date:</strong> <span class="text-primary">@Model.messageResponse.Content.EndDate</span></p>
+                <p><strong>🚖 Transportation:</strong> <span class="badge bg-success fs-6">@Model.messageResponse.Content.Transportation</span></p>
+            </div>
+
+            <h3 class="mt-5 text-dark fw-semibold">🗺️ Your Itinerary</h3>
+            <hr class="border-primary" />
+            <div class="row">
+                @foreach (var day in Model.messageResponse.Content.Itinerary)
+                {
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
+                            <div class="card-header bg-primary text-white text-center py-3">
+                                <h4 class="m-0">Day @day.Day</h4>
+                            </div>
+                            <div class="card-body p-4">
+                                <p><strong>💰 Budget:</strong> <span class="text-success fw-bold">$@day.Budget</span></p>
+                                <p><strong>📝 Notes:</strong> @day.Notes</p>
+                                <p><strong>⛅ Weather:</strong> <span class="text-warning">☀️ @day.Weather.Temperature°C - @day.Weather.Description</span></p>
+
+                                <h5 class="mt-3">🎯 Activities</h5>
+                                <ul class="list-group list-group-flush">
+                                    @foreach (var activity in day.Activities)
+                                    {
+                                        <li class="list-group-item border-0 bg-light rounded-3 p-3 mb-2 shadow-sm">
+                                            <strong>⏰ @activity.Time</strong> - <span class="fw-semibold">@activity.Location</span>
+                                            <br />
+                                            <small class="text-muted">🍽 Food: @string.Join(", ", activity.FoodRecommendations)</small>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+} else
+{
+    <h1><strong>Empty</strong></h1>
+}
